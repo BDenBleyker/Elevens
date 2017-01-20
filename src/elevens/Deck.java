@@ -12,7 +12,7 @@ public class Deck {
     /**
      * cards contains all the cards in the deck.
      */
-    private final List<Card> cards;
+    private List<Card> cards;
 
     /**
      * size is the number of not-yet-dealt cards. Cards are dealt from the top
@@ -57,13 +57,14 @@ public class Deck {
     public int size() {
         return size;
     }
-
+    
     /**
      * Randomly permute the given collection of cards and reset the size to
      * represent the entire deck.
      */
     public void shuffle() {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+        size = cards.size();
+        cards = Shuffler.selectionShuffle(cards);
     }
 
     /**
