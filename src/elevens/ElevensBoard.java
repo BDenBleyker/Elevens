@@ -69,7 +69,33 @@ public class ElevensBoard extends Board {
 	 */
 	@Override
 	public boolean anotherPlayIsPossible() {
-		
+		boolean eleven = false;
+		boolean twelve = false;
+		boolean thirteen = false;
+		for (Card c : cards) {
+			for (Card a : cards) {
+				List<Integer> addTogether = new ArrayList();
+				addTogether.add(c.pointValue());
+				addTogether.add(a.pointValue());
+				if (isLegal(addTogether)) {
+					return true;
+				}
+			}
+			switch (c.pointValue()) {
+				case 11:
+					eleven = true;
+					break;
+				case 12:
+					twelve = true;
+					break;
+				case 13:
+					thirteen = true;
+			}
+			if (eleven && twelve && thirteen) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
