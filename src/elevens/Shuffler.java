@@ -42,7 +42,7 @@ public class Shuffler {
             List<Card> shuffledCards = selectionShuffle(values2);
             System.out.print("  " + j + ":");
             for (int k = 0; k < values2.size(); k++) {
-                System.out.print(" " + shuffledCards.get(k));
+                System.out.print(" " + shuffledCards.toArray()[k]);
             }
             System.out.println();
         }
@@ -86,9 +86,9 @@ public class Shuffler {
     public static List<Card> selectionShuffle(List<Card> values) {
         for (int k = (values.size() - 1); k >= 0; k--) {
             int j = (int) (k * Math.random());
-            Card shuffled = values.get(j);
-            values.set(j, values.get(k));
-            values.set(j, shuffled);
+            Card shuffled = values.toArray()[j];
+            values.set(j, (Card) values.toArray()[k]);
+            values.set(j, (Card) shuffled);
         }
         return values;
     }
